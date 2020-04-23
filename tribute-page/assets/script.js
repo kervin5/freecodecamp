@@ -4,6 +4,7 @@ const data = {
     image: "assets/images/tesla.jpg",
     description:
       "My brain is only a receiver, in the Universe there is a core from which we obtain knowledge, strength and inspiration. I have not penetrated into the secrets of this core, but I know that it exists.",
+    learnMore: "https://en.wikipedia.org/wiki/Nikola_Tesla##",
   },
   facts: [
     {
@@ -101,10 +102,19 @@ const data = {
 };
 
 ((window, data) => {
+  initialize(data);
+})(window, data);
+
+function initialize(data) {
+  const facts = data.facts.map((item) => generateListItem(item)).join(" ");
+  setContent("title", `Tribute to ${data.bio.name}`);
   setContent("#title", data.bio.name);
   setAttribute("#image", "src", data.bio.image);
   setContent("#img-caption", data.bio.description);
-})(window, data);
+
+  setContent("#facts-list", facts);
+  setAttribute("#tribute-link", "src", data.bio.learnMore);
+}
 
 function setContent(elementIdentifier, text) {
   const element = document.querySelector(elementIdentifier);
@@ -114,4 +124,12 @@ function setContent(elementIdentifier, text) {
 function setAttribute(elementIdentifier, attribute, value) {
   const element = document.querySelector(elementIdentifier);
   element.setAttribute(attribute, value);
+}
+
+function generateListItem({ date, fact, detail }) {
+  return `<li>
+        <h2>${fact}</h2>
+        <h3>${date}</h3>
+        <p>${detail}</p>
+    </li>`;
 }
