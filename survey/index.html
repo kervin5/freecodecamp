@@ -8,7 +8,7 @@
   </head>
   <body>
     <main id="container">
-      <header>
+      <header id="header">
         <h1 id="title">Super Survey</h1>
         <p id="description">
           Thank you for taking the time to help us improve our service
@@ -93,7 +93,15 @@
             ><input type="checkbox" name="language" value="None" />None</label
           >
         </div>
-        <textarea placeholder="comments"></textarea>
+        <div class="input-field">
+          <label for="comments">Additional Comments</label>
+          <textarea
+            placeholder="comments"
+            name="comments"
+            id="comments"
+          ></textarea>
+        </div>
+
         <button type="submit" id="submit">Send</button>
       </form>
     </main>
